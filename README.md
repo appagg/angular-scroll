@@ -1,4 +1,4 @@
-angular-scroll
+angular-scroll (remora-mod branch from v0.6.2)
 ==============
 
 Only dependent on AngularJS (no jQuery). 8K minified or 2K gzipped.

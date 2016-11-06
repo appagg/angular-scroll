@@ -461,7 +461,7 @@ angular.module('duScroll.smoothScroll', ['duScroll.scrollHelpers', 'duScroll.scr
 
         var target = document.getElementById($attr.href.replace(/.*(?=#[^\s]+$)/, '').substring(1));
         if(!target || !target.getBoundingClientRect) return;
-        
+
         if (e.stopPropagation) e.stopPropagation();
         if (e.preventDefault) e.preventDefault();
 
@@ -469,9 +469,13 @@ angular.module('duScroll.smoothScroll', ['duScroll.scrollHelpers', 'duScroll.scr
         var duration  = $attr.duration ? parseInt($attr.duration, 10) : duScrollDuration;
         var container = scrollContainerAPI.getContainer($scope);
 
+        // update active state if there's no scrolling
+        $scope.helpIndex = $attr.href;
+        $scope.$apply();
+
         container.scrollToElement(
-          angular.element(target), 
-          isNaN(offset) ? 0 : offset, 
+          angular.element(target),
+          isNaN(offset) ? 0 : offset,
           isNaN(duration) ? 0 : duration
         );
       });
